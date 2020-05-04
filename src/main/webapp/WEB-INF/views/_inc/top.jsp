@@ -9,29 +9,26 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                data-target="#menu-container" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">SpringMySite</a>
+            <a class="navbar-brand" href="#">SpringMyShop</a>
         </div>
         <!-- /.navbar-collapse -->
 
-        <ul class="nav navbar-nav navbar-left">
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">회원가입</a></li>
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="#">장바구니</a></li>
-                    <li><a href="#">주문확인</a></li>
-                </ul>
-            </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="menu-container">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" title="로그인"><i class="fas fa-sign-in-alt"></i><span class="hidden-md hidden-lg">&nbsp;로그인</span></a></li>
+                <li><a href="#" title="회원가입"><i class="fas fa-user-plus"></i><span class="hidden-md hidden-lg">&nbsp;회원가입</span></a></li>
+                <li><a href="#" title="장바구니"><i class="fas fa-shopping-cart"></i><span class="hidden-md hidden-lg">&nbsp;장바구니</span></a></li>
+                <li><a href="#" title="주문조회"><i class="fas fa-shopping-bag"></i><span class="hidden-md hidden-lg">&nbsp;주문조회</span></a></li>
+            </ul>
+        </div>
     </div>
     <!-- /.container-fluid -->
 </nav>

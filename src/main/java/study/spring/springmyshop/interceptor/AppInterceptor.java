@@ -1,4 +1,4 @@
-package study.spring.springmysite.interceptor;
+package study.spring.springmyshop.interceptor;
 
 import java.util.Map;
 
@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import lombok.extern.slf4j.Slf4j;
-import study.spring.springmysite.helper.WebHelper;
+import study.spring.springmyshop.helper.WebHelper;
 import uap_clj.java.api.Browser;
 import uap_clj.java.api.Device;
 import uap_clj.java.api.OS;

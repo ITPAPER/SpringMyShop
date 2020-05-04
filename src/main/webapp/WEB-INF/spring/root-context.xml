@@ -11,7 +11,7 @@
         <!-- 업로드 디렉토리 -->
         <prop key="uploadDir">D:/workspace-eclipse/upload</prop>
         <!-- 업로드 디렉토리에 대한 WebPath -->
-        <prop key="uploadPath">/springmysite/upload</prop>
+        <prop key="uploadPath">/springmyshop/upload</prop>
         <!-- 최대 업로드 가능 용량 (-1인 경우 무제한) -->
         <prop key="uploadMaxFileSize">-1</prop>
         <!-- 기본 도메인(쿠키설정용) -->
@@ -45,7 +45,7 @@
     </util:properties>
 
     <!-- WebHelper 주입 설정 -->
-    <bean id="webHelper" class="study.spring.springmysite.helper.WebHelper">
+    <bean id="webHelper" class="study.spring.springmyshop.helper.WebHelper">
         <property name="encType" value="#{config['encType']}" />
         <property name="uploadDir" value="#{config['uploadDir']}" />
         <property name="uploadPath" value="#{config['uploadPath']}" />
@@ -58,10 +58,10 @@
     </bean>
 
     <!-- RegexHelper 주입 설정 -->
-    <bean id="regexHelper" class="study.spring.springmysite.helper.RegexHelper" />
+    <bean id="regexHelper" class="study.spring.springmyshop.helper.RegexHelper" />
 
     <!-- RetrofitHelper 주입 설정 -->
-    <bean id="retrofitHelper" class="study.spring.springmysite.helper.RetrofitHelper" />
+    <bean id="retrofitHelper" class="study.spring.springmyshop.helper.RetrofitHelper" />
 
     <!-- 메일 발송에 필요한 정보를 저장하는 객체 정의 -->
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -83,7 +83,7 @@
     </bean>
 
     <!-- Mail Helper 주입 설정 -->
-    <bean id="mailHelper" class="study.spring.springmysite.helper.MailHelper">
+    <bean id="mailHelper" class="study.spring.springmyshop.helper.MailHelper">
         <constructor-arg ref="mailSender" />
     </bean>
 

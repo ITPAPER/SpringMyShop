@@ -1,4 +1,4 @@
-package study.spring.springmysite.controllers;
+package study.spring.springmyshop.controllers;
 
 import java.text.DateFormat;
 import java.util.Date;
