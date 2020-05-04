@@ -19,8 +19,9 @@
 
         <div class="collapse navbar-collapse" id="menu-container">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
+                <li><a href="#">베스트</a></li>
+                <li><a href="#">신상품</a></li>
+                <li><a href="#">추천상품</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" title="로그인"><i class="fas fa-sign-in-alt"></i><span class="hidden-md hidden-lg">&nbsp;로그인</span></a></li>

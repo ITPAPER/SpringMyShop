@@ -33,11 +33,11 @@
         <!-- 데이터베이스 포트번호 -->
         <prop key="dbPort">3306</prop>
         <!-- 데이터베이스 이름 -->
-        <prop key="dbName">springmysite</prop>
+        <prop key="dbName">springmyshop</prop>
         <!-- 데이터베이스 문자셋 -->
         <prop key="dbCharset">utf8</prop>
         <!-- 데이터베이스 계정명 -->
-        <prop key="dbUsername">springmysite</prop>
+        <prop key="dbUsername">root</prop>
         <!-- 데이터베이스 비밀번호 -->
         <prop key="dbPassword">123qwe!@#</prop>
         <!-- Mapper 파일들이 위치할 '/src/main/resources' 하위의 경로 -->
