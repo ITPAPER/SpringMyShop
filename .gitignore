@@ -49,7 +49,6 @@ target/
 upload/
 logs/
 log/
-log4j.xml
 
 # 핵심 helper 클래스들 제외
 helper/

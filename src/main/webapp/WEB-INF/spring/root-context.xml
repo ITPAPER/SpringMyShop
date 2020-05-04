@@ -9,9 +9,9 @@
         <!-- 기본 인코딩 타입 -->
         <prop key="encType">UTF-8</prop>
         <!-- 업로드 디렉토리 -->
-        <prop key="uploadDir">T:/workspace-java/upload</prop>
+        <prop key="uploadDir">D:/workspace-eclipse/upload</prop>
         <!-- 업로드 디렉토리에 대한 WebPath -->
-        <prop key="uploadPath">/upload</prop>
+        <prop key="uploadPath">/springmysite/upload</prop>
         <!-- 최대 업로드 가능 용량 (-1인 경우 무제한) -->
         <prop key="uploadMaxFileSize">-1</prop>
         <!-- 기본 도메인(쿠키설정용) -->
