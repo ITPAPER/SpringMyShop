@@ -9,9 +9,9 @@
         <!-- 기본 인코딩 타입 -->
         <prop key="encType">UTF-8</prop>
         <!-- 업로드 디렉토리 -->
-        <prop key="uploadDir">D:/workspace-eclipse/upload</prop>
+        <prop key="uploadDir">자신의_workspace_경로/upload</prop>
         <!-- 업로드 디렉토리에 대한 WebPath -->
-        <prop key="uploadPath">/springmyshop/upload</prop>
+        <prop key="uploadPath">/프로젝트이름/upload</prop>
         <!-- 최대 업로드 가능 용량 (-1인 경우 무제한) -->
         <prop key="uploadMaxFileSize">-1</prop>
         <!-- 기본 도메인(쿠키설정용) -->
@@ -21,9 +21,9 @@
         <!-- 메일발송 서버 포트 -->
         <prop key="smtpPort">465</prop>
         <!-- 메일발송 서버 계정 -->
-        <prop key="smtpUsername">leekh4232@gmail.com</prop>
+        <prop key="smtpUsername">구글메일주소</prop>
         <!-- 메일발송 서버 비밀번호 -->
-        <prop key="smtpPassword">wcythwfazyzzjhjh</prop>
+        <prop key="smtpPassword">구글앱비밀번호</prop>
     </util:properties>
 
     <!-- DB연동에 필요한 환경설정 값 -->

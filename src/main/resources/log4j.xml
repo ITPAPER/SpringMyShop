@@ -14,7 +14,7 @@
     <!-- 파일로 기록되는 로그 설정 -->
     <appender name="rollingFile" class="org.apache.log4j.RollingFileAppender">
         <!-- 로그 파일 생성위치 -->
-        <param name="file" value="D:/workspace-eclipse/logs/web.log" />
+        <param name="file" value="자신의_workspace_경로/logs/web.log" />
         <param name="Append" value="true" />
         <!-- 로그 파일 하나당 사이즈 100m -->
         <param name="MaxFileSize" value="100mb" />
@@ -28,7 +28,7 @@
     <!-- 날짜별 에러 로그 생성 -->
     <appender name="errorFile" class="org.apache.log4j.DailyRollingFileAppender">
         <param name="Threshold" value="ERROR" />
-        <param name="File" value="D:/workspace-eclipse/logs/error.log" />
+        <param name="File" value="자신의_workspace_경로/logs/error.log" />
         <param name="Append" value="true" />
         <param name="DatePattern" value="'.'yyMMdd" />
         <layout class="org.apache.log4j.PatternLayout">
@@ -37,7 +37,7 @@
     </appender>
 
     <!-- Application Loggers -->
-    <logger name="study.spring.springmysite">
+    <logger name="study.spring.springmyshop">
         <level value="debug" />
     </logger>
 
