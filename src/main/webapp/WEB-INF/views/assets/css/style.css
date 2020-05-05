@@ -37,3 +37,52 @@ label.error {
 #menu-container .member-photo-link {
     padding: 7px;
 }
+
+.product-list .title-img {
+    height: 300px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.product-list a {
+    color: #222;
+    display: block;
+}
+
+.product-list a:hover {
+    text-decoration: none;
+}
+
+.product-list h3 {
+    font-size: 16px;
+    color: #000;
+    font-weight: normal;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.product-list .price {
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #222;
+}
+
+.product-list .desc {
+    font-size: 12px;
+    color: #555;
+}
+
+.product-list .cancel-price {
+    font-size: 13px;
+    text-decoration: line-through;
+    color: #333;
+}
+
+.product-list .sale-price {
+    font-size: 15px;
+    margin-left: 10px;
+    color: #f00;
+}
