@@ -105,4 +105,16 @@
         SELECT COUNT(*) FROM members WHERE email=#{email}
     </select>
 
+    <!-- 로그인 조회 -->
+    <select id="login" parameterType="study.spring.springmyshop.model.Members" resultMap="membersMap">
+        SELECT id, user_id, user_pw, user_name, email, phone, birthday, gender, postcode, addr1, addr2, photo, is_out, is_admin, login_date, reg_date, edit_date 
+        FROM members 
+        WHERE user_id=#{userId} AND user_pw=MD5(#{userPw}) AND is_out='N'
+    </select>
+
+    <!-- 최근 로그인 시간 갱신 -->
+    <update id="updateLoginDate" parameterType="study.spring.springmyshop.model.Members">
+        UPDATE members SET login_date=now() WHERE id=#{id}
+    </update>
+
 </mapper>

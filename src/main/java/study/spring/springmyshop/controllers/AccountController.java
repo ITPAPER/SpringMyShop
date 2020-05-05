@@ -19,4 +19,11 @@ public class AccountController {
         return "account/join";
     }
 
+    /**
+     * 로그인 페이지
+     */
+    @RequestMapping(value = "/account/login", method = RequestMethod.GET)
+    public String login() {
+        return "account/login";
+    }
 }

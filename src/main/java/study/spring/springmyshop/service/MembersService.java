@@ -66,4 +66,11 @@ public interface MembersService {
      * @throws Exception
      */
     public void emailUniqueCheck(Members input) throws Exception;
+    
+    /**
+     * 로그인
+     * @param input
+     * @throws Exception
+     */
+    public Members login(Members input) throws Exception;
 }

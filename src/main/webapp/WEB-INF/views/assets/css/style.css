@@ -27,3 +27,13 @@ label.error {
     padding: 5px;
     margin-bottom: 0;
 }
+
+#menu-container .member-photo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+#menu-container .member-photo-link {
+    padding: 7px;
+}

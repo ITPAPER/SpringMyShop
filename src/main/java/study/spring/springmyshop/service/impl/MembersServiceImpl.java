@@ -220,4 +220,33 @@ public class MembersServiceImpl implements MembersService {
         }
     }
 
+    /**
+     * 로그인
+     * @param input
+     * @throws Exception
+     */
+    @Override
+    public Members login(Members input) throws Exception {
+        Members result = null;
+
+        try {
+            result = sqlSession.selectOne("MembersMapper.login", input);
+
+            if (result == null) {
+                throw new NullPointerException("result=null");
+            }
+            
+            // 조회에 성공하면 result에 저장되어 있는 PK를 활용하여 로그인 시간을 갱신한다.
+            sqlSession.update("MembersMapper.updateLoginDate", result);
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("아이디나 비밀번호가 잘못되었습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 조회에 실패했습니다.");
+        }
+
+        return result;
+    }
+
 }

@@ -3,6 +3,25 @@ function foldPostcode(e) {
 }
 
 $(function () {
+    /** 로그아웃 */
+    $(".logout").click(function(e) {
+        e.preventDefault();
+        
+        swal({
+            title: '확인',
+            text: '정말 로그아웃 하시겠습니까?', 
+            type: "question",
+            showCancelButton: true
+        }).then(function(result) {
+            if (result.value) {
+                $.get(ROOT_URL + "/rest/account/logout", function() {
+                    window.location = ROOT_URL;
+                });
+            }
+        });
+    });
+    
+    
     /** 유효성 검사 추가 함수 */
     $.validator.addMethod("kor", function(value, element) {
         return this.optional(element) || /^[ㄱ-ㅎ가-힣]*$/i.test(value);

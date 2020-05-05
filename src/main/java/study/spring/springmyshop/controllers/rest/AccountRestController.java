@@ -202,4 +202,58 @@ public class AccountRestController {
         /** 4) 결과 표시 */
         return webHelper.getJsonData();
     }
+
+    /** 회원가입 */
+    @RequestMapping(value = "/rest/account/login", method = RequestMethod.POST)
+    public Map<String, Object> login(
+            @RequestParam(value = "user_id",        required = false) String userId,
+            @RequestParam(value = "user_pw",        required = false) String userPw) {
+
+        /** 1) 유효성 검증 */
+        // POSTMAN 등의 클라이언트 프로그램으로 백엔드에 직접 접속하는 경우를 방지하기 위해
+        // REST컨트롤러에서도 프론트의 유효성 검증과 별개로 자체 유효성 검증을 수행해야 한다. 
+        if (!regexHelper.isValue(userId)) { return webHelper.getJsonWarning("아이디를 입력하세요."); }
+        if (!regexHelper.isValue(userPw)) { return webHelper.getJsonWarning("비밀번호를 입력하세요."); }
+
+        /** 2) 데이터 조회 */
+        Members input = new Members();
+        input.setUserId(userId);
+        input.setUserPw(userPw);
+        
+        /** 3) 로그인 */
+        Members output = null;
+        
+        try {
+            output = membersService.login(input);
+        } catch (Exception e) {
+            return webHelper.getJsonError(e.getLocalizedMessage());
+        }
+        
+        /** 4) 프로필 사진이 존재하는 경우 썸네일 이미지 생성 */
+        UploadItem photo = output.getPhoto();
+        
+        if (photo != null) {
+            try {
+                String thumbPath = webHelper.createThumbnail(photo.getFilePath(), 150, 150, true);
+                
+                // 웹 상에서 접근할 수 있는 URL정보 등록
+                photo.setFileUrl(webHelper.getUploadPath(photo.getFilePath()));
+                photo.setThumbnailUrl(webHelper.getUploadPath(thumbPath));
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+        /** 5) 세션 생성 및 결과 표시 */
+        webHelper.setSession("member", output);
+        return webHelper.getJsonData();
+    }
+
+    /** 회원가입 */
+    @RequestMapping(value = "/rest/account/logout", method = RequestMethod.GET)
+    public Map<String, Object> logout() {
+        webHelper.removeAllSession();
+        return webHelper.getJsonData();
+    }
 }

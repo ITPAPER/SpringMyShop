@@ -20,16 +20,25 @@
         <!-- /.navbar-collapse -->
 
         <div class="collapse navbar-collapse" id="menu-container">
-            <ul class="nav navbar-nav navbar-left">
+            <!-- <ul class="nav navbar-nav navbar-left">
                 <li><a href="#">베스트</a></li>
                 <li><a href="#">신상품</a></li>
                 <li><a href="#">추천상품</a></li>
-            </ul>
+            </ul> -->
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="${pageContext.request.contextPath}/account/login" title="로그인"><i class="fas fa-sign-in-alt"></i><span class="hidden-md hidden-lg">&nbsp;로그인</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/account/join" title="회원가입"><i class="fas fa-user-plus"></i><span class="hidden-md hidden-lg">&nbsp;회원가입</span></a></li>
-                <li><a href="#" title="장바구니"><i class="fas fa-shopping-cart"></i><span class="hidden-md hidden-lg">&nbsp;장바구니</span></a></li>
-                <li><a href="#" title="주문조회"><i class="fas fa-shopping-bag"></i><span class="hidden-md hidden-lg">&nbsp;주문조회</span></a></li>
+                <%-- JSTL을 통해 세션에 직접 접근하기 --%>
+                <c:choose>
+                    <c:when test="${member == null}">
+                        <li><a href="${pageContext.request.contextPath}/account/login" title="로그인"><i class="fas fa-sign-in-alt"></i><span class="hidden-md hidden-lg">&nbsp;로그인</span></a></li>
+                        <li><a href="${pageContext.request.contextPath}/account/join" title="회원가입"><i class="fas fa-user-plus"></i><span class="hidden-md hidden-lg">&nbsp;회원가입</span></a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li><a href="${pageContext.request.contextPath}/rest/account/logout" title="로그아웃" class="logout member-photo-link"><img src="${member.photo.thumbnailUrl}" class="member-photo"/></a></li>
+                        <li><a href="${pageContext.request.contextPath}/rest/account/logout" title="로그아웃" class="logout"><i class="fas fa-sign-out-alt"></i><span class="hidden-md hidden-lg">&nbsp;로그아웃</span></a></li>
+                    </c:otherwise>
+                </c:choose>
+                <!-- <li><a href="#" title="장바구니"><i class="fas fa-shopping-cart"></i><span class="hidden-md hidden-lg">&nbsp;장바구니</span></a></li>
+                <li><a href="#" title="주문조회"><i class="fas fa-shopping-bag"></i><span class="hidden-md hidden-lg">&nbsp;주문조회</span></a></li> -->
             </ul>
         </div>
     </div>
