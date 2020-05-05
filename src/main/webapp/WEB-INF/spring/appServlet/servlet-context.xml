@@ -20,7 +20,8 @@
     </beans:bean>
 
     <context:component-scan base-package="study.spring.springmyshop.controllers" />
-    <context:component-scan base-package="study.spring.springmysite.service.impl" />
+    <context:component-scan base-package="study.spring.springmyshop.controllers.rest" />
+    <context:component-scan base-package="study.spring.springmyshop.service.impl" />
 
     <!-- 인터셉터 등록 -->
     <interceptors>

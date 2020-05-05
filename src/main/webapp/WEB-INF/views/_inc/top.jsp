@@ -26,8 +26,8 @@
                 <li><a href="#">추천상품</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" title="로그인"><i class="fas fa-sign-in-alt"></i><span class="hidden-md hidden-lg">&nbsp;로그인</span></a></li>
-                <li><a href="#" title="회원가입"><i class="fas fa-user-plus"></i><span class="hidden-md hidden-lg">&nbsp;회원가입</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/account/login" title="로그인"><i class="fas fa-sign-in-alt"></i><span class="hidden-md hidden-lg">&nbsp;로그인</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/account/join" title="회원가입"><i class="fas fa-user-plus"></i><span class="hidden-md hidden-lg">&nbsp;회원가입</span></a></li>
                 <li><a href="#" title="장바구니"><i class="fas fa-shopping-cart"></i><span class="hidden-md hidden-lg">&nbsp;장바구니</span></a></li>
                 <li><a href="#" title="주문조회"><i class="fas fa-shopping-bag"></i><span class="hidden-md hidden-lg">&nbsp;주문조회</span></a></li>
             </ul>
