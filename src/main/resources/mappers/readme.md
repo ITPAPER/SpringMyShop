@@ -1,1 +1,0 @@
-# MyBatis Mapper XML이 저장되는 폴더 입니다.

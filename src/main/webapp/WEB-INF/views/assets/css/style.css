@@ -1,0 +1,29 @@
+.image-upload input[type='file'] {
+    visibility: hidden;
+    width: 0;
+    height: 0
+}
+
+.image-upload .preview-btn {
+    cursor: pointer;
+    background-image: url(../img/upload.png);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.control-label {
+    white-space: nowrap;
+}
+
+#join-form .input-group-btn {
+    vertical-align: top;
+}
+
+label.error {
+    color: red;
+    font-weight: normal;
+    font-size: 13px;
+    padding: 5px;
+    margin-bottom: 0;
+}

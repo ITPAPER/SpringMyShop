@@ -52,3 +52,6 @@ log/
 
 # 핵심 helper 클래스들 제외
 helper/
+sql/
+script/
+

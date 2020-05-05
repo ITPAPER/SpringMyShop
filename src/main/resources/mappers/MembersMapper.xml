@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MembersMapper">
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="membersMap" type="study.spring.springmyshop.model.Members">
+        <!-- 일련번호, IS NOT NULL, PRI -->
+        <result property="id" column="id" />
+        <!-- 아이디, IS NOT NULL -->
+        <result property="userId" column="user_id" />
+        <!-- 비밀번호(암호화저장), IS NOT NULL -->
+        <result property="userPw" column="user_pw" />
+        <!-- 회원이름, IS NOT NULL -->
+        <result property="userName" column="user_name" />
+        <!-- 이메일, IS NOT NULL -->
+        <result property="email" column="email" />
+        <!-- 연락처, IS NOT NULL -->
+        <result property="phone" column="phone" />
+        <!-- 생년월일, IS NOT NULL -->
+        <result property="birthday" column="birthday" />
+        <!-- 성별(M=남자,F=여자), IS NOT NULL -->
+        <result property="gender" column="gender" />
+        <!-- 우편번호, IS NOT NULL -->
+        <result property="postcode" column="postcode" />
+        <!-- 검색된 주소, IS NOT NULL -->
+        <result property="addr1" column="addr1" />
+        <!-- 나머지 주소, IS NOT NULL -->
+        <result property="addr2" column="addr2" />
+        <!-- 프로필사진 정보{json=UploadItem}, IS NULL -->
+        <result property="photoJson" column="photo" />
+        <!-- 탈퇴여부(Y/N), IS NOT NULL -->
+        <result property="isOut" column="is_out" />
+        <!-- 관리자 여부(Y/N), IS NOT NULL -->
+        <result property="isAdmin" column="is_admin" />
+        <!-- 마지막 로그인 일시, IS NULL -->
+        <result property="loginDate" column="login_date" />
+        <!-- 등록일시, IS NOT NULL -->
+        <result property="regDate" column="reg_date" />
+        <!-- 변경일시, IS NOT NULL -->
+        <result property="editDate" column="edit_date" />
+    </resultMap>
+
+    <!-- 단일행 조회를 위한 기능 정의 -->
+    <select id="selectItem" parameterType="study.spring.springmyshop.model.Members" resultMap="membersMap">
+        SELECT id, user_id, user_pw, user_name, email, phone, birthday, gender, postcode, addr1, addr2, photo, is_out, is_admin, login_date, reg_date, edit_date FROM members WHERE id=#{id}
+    </select>
+
+    <!-- 다중행 조회를 위한 기능 정의 -->
+    <select id="selectList" parameterType="study.spring.springmyshop.model.Members" resultMap="membersMap">
+        SELECT id, user_id, user_pw, user_name, email, phone, birthday, gender, postcode, addr1, addr2, photo, is_out, is_admin, login_date, reg_date, edit_date FROM members
+        ORDER BY id DESC
+        <if test="listCount > 0">
+            LIMIT #{offset}, #{listCount}
+        </if>
+    </select>
+
+    <!-- 데이터 수 조회를 위한 기능 정의 -->
+    <select id="selectCountAll" parameterType="study.spring.springmyshop.model.Members" resultType="int">
+        SELECT COUNT(*) FROM members
+    </select>
+
+    <!-- 데이터 저장을 위한 기능 정의 -->
+    <insert id="insertItem" parameterType="study.spring.springmyshop.model.Members" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO members (
+            user_id, user_pw, user_name, email, phone, birthday, gender, postcode, addr1, addr2, photo, is_out, is_admin, login_date, reg_date, edit_date
+        ) VALUES (
+            #{userId}, #{userPw}, #{userName}, #{email}, #{phone}, #{birthday}, #{gender}, #{postcode}, #{addr1}, #{addr2}, #{photoJson}, #{isOut}, #{isAdmin}, #{loginDate}, now(), now()
+        )
+    </insert>
+
+    <!-- 데이터 삭제를 위한 기능 정의 -->
+    <delete id="deleteItem" parameterType="study.spring.springmyshop.model.Members">
+        DELETE FROM members WHERE id=#{id}
+    </delete>
+
+    <!-- 데이터 갱신을 위한 기능 정의 -->
+    <update id="updateItem" parameterType="study.spring.springmyshop.model.Members">
+        UPDATE members SET 
+            user_id=#{userId},
+            user_pw=#{userPw},
+            user_name=#{userName},
+            email=#{email},
+            phone=#{phone},
+            birthday=#{birthday},
+            gender=#{gender},
+            postcode=#{postcode},
+            addr1=#{addr1},
+            addr2=#{addr2},
+            photo=#{photoJson},
+            is_out=#{isOut},
+            is_admin=#{isAdmin},
+            login_date=#{loginDate},
+            edit_date=now()
+        WHERE id=#{id}
+    </update>
+    
+    <!-- 아이디 중복검사 -->
+    <select id="idUniqueCheck" parameterType="study.spring.springmyshop.model.Members" resultType="int">
+        SELECT COUNT(*) FROM members WHERE user_id=#{userId}
+    </select>
+    
+    <!-- 이메일 중복검사 -->
+    <select id="emailUniqueCheck" parameterType="study.spring.springmyshop.model.Members" resultType="int">
+        SELECT COUNT(*) FROM members WHERE email=#{email}
+    </select>
+
+</mapper>

@@ -3,7 +3,7 @@ package study.spring.springmyshop.model;
 import com.google.gson.Gson;
 import study.spring.springmyshop.helper.UploadItem;
 
-/** `회원` 테이블의 POJO 클래스 (20/05/05 15:09:02) */
+/** `회원` 테이블의 POJO 클래스 (20/05/06 05:15:10) */
 public class Members {
     /** 일련번호, IS NOT NULL, PRI */
     private int id;
@@ -19,6 +19,9 @@ public class Members {
 
     /** 이메일, IS NOT NULL */
     private String email;
+
+    /** 연락처, IS NOT NULL */
+    private String phone;
 
     /** 생년월일, IS NOT NULL */
     private String birthday;
@@ -44,7 +47,7 @@ public class Members {
     /** 관리자 여부(Y/N), IS NOT NULL */
     private String isAdmin;
 
-    /** 마지막 로그인 일시, IS NOT NULL */
+    /** 마지막 로그인 일시, IS NULL */
     private String loginDate;
 
     /** 등록일시, IS NOT NULL */
@@ -103,6 +106,16 @@ public class Members {
         return this.email;
     }
 
+    /** 연락처, IS NOT NULL */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    /** 연락처, IS NOT NULL */
+    public String getPhone() {
+        return this.phone;
+    }
+
     /** 생년월일, IS NOT NULL */
     public void setBirthday(String birthday) {
         this.birthday = birthday;
@@ -154,7 +167,7 @@ public class Members {
     }
 
     /** 프로필사진 정보{json=UploadItem}, IS NULL */
-    public void setPhoto(String photo) {
+    public void setPhotoJson(String photo) {
         this.photo = new Gson().fromJson(photo, UploadItem.class);
     }
 
@@ -193,12 +206,12 @@ public class Members {
         return this.isAdmin;
     }
 
-    /** 마지막 로그인 일시, IS NOT NULL */
+    /** 마지막 로그인 일시, IS NULL */
     public void setLoginDate(String loginDate) {
         this.loginDate = loginDate;
     }
 
-    /** 마지막 로그인 일시, IS NOT NULL */
+    /** 마지막 로그인 일시, IS NULL */
     public String getLoginDate() {
         return this.loginDate;
     }
@@ -225,12 +238,13 @@ public class Members {
 
     @Override
     public String toString() {
-        String str = "\n[Members]";
+        String str = "\n[Members]\n";
         str += "id: " + this.id + " (일련번호, IS NOT NULL, PRI)\n";
         str += "userId: " + this.userId + " (아이디, IS NOT NULL)\n";
         str += "userPw: " + this.userPw + " (비밀번호(암호화저장), IS NOT NULL)\n";
         str += "userName: " + this.userName + " (회원이름, IS NOT NULL)\n";
         str += "email: " + this.email + " (이메일, IS NOT NULL)\n";
+        str += "phone: " + this.phone + " (연락처, IS NOT NULL)\n";
         str += "birthday: " + this.birthday + " (생년월일, IS NOT NULL)\n";
         str += "gender: " + this.gender + " (성별(M=남자,F=여자), IS NOT NULL)\n";
         str += "postcode: " + this.postcode + " (우편번호, IS NOT NULL)\n";
@@ -239,7 +253,7 @@ public class Members {
         str += "photo: " + this.photo + " (프로필사진 정보{json=UploadItem}, IS NULL)\n";
         str += "isOut: " + this.isOut + " (탈퇴여부(Y/N), IS NOT NULL)\n";
         str += "isAdmin: " + this.isAdmin + " (관리자 여부(Y/N), IS NOT NULL)\n";
-        str += "loginDate: " + this.loginDate + " (마지막 로그인 일시, IS NOT NULL)\n";
+        str += "loginDate: " + this.loginDate + " (마지막 로그인 일시, IS NULL)\n";
         str += "regDate: " + this.regDate + " (등록일시, IS NOT NULL)\n";
         str += "editDate: " + this.editDate + " (변경일시, IS NOT NULL)\n";
         return str;
