@@ -1,10 +1,11 @@
 package study.spring.springmyshop.model;
 
+import java.util.List;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.Gson;
-
 import study.spring.springmyshop.helper.UploadItem;
 
-/** `상품` 테이블의 POJO 클래스 (20/05/06 07:23:58) */
+/** `상품` 테이블의 POJO 클래스 (20/05/07 04:26:41) */
 public class Products {
     /** 일련번호, IS NOT NULL, PRI */
     private int id;
@@ -21,6 +22,9 @@ public class Products {
     /** 할인가(할인없을 경우 0), IS NOT NULL */
     private int salePrice;
 
+    /** 옵션(json=ProductOptions,list=True), IS NOT NULL */
+    private List<ProductOptions> option;
+
     /** 노출여부(Y/N), IS NOT NULL */
     private String isOpen;
 
@@ -32,6 +36,9 @@ public class Products {
 
     /** 추천상품(Y/N), IS NOT NULL */
     private String isVote;
+
+    /** 상품 URL(크롤링한 원본 사이트), IS NOT NULL */
+    private String url;
 
     /** 상품설명, IS NOT NULL */
     private Object content;
@@ -98,6 +105,26 @@ public class Products {
         return this.salePrice;
     }
 
+    /** 옵션(json=ProductOptions,list=True), IS NOT NULL */
+    public void setOptionJson(String option) {
+        this.option = new Gson().fromJson(option, new TypeToken<List<ProductOptions>>() {}.getType());
+    }
+
+    /** 옵션(json=ProductOptions,list=True), IS NOT NULL */
+    public void setOption(List<ProductOptions> option) {
+        this.option = option;
+    }
+
+    /** 옵션(json=ProductOptions,list=True), IS NOT NULL */
+    public List<ProductOptions> getOption() {
+        return this.option;
+    }
+
+    /** 옵션(json=ProductOptions,list=True), IS NOT NULL */
+    public String getOptionJson() {
+        return new Gson().toJson(option);
+    }
+
     /** 노출여부(Y/N), IS NOT NULL */
     public void setIsOpen(String isOpen) {
         this.isOpen = isOpen;
@@ -136,6 +163,16 @@ public class Products {
     /** 추천상품(Y/N), IS NOT NULL */
     public String getIsVote() {
         return this.isVote;
+    }
+
+    /** 상품 URL(크롤링한 원본 사이트), IS NOT NULL */
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    /** 상품 URL(크롤링한 원본 사이트), IS NOT NULL */
+    public String getUrl() {
+        return this.url;
     }
 
     /** 상품설명, IS NOT NULL */
@@ -210,22 +247,22 @@ public class Products {
 
     /** LIMIT 절에서 사용할 조회 시작 위치 */
     private static int offset;
-    
+
     /** LIMIT 절에서 사용할 조회할 데이터 수 */
     private static int listCount;
-    
+
     public static int getOffset() {
         return offset;
     }
-    
+
     public static void setOffset(int offset) {
         Products.offset = offset;
     }
-    
+
     public static int getListCount() {
         return listCount;
     }
-    
+
     public static void setListCount(int listCount) {
         Products.listCount = listCount;
     }
@@ -238,10 +275,12 @@ public class Products {
         str += "description: " + this.description + " (간략설명, IS NOT NULL)\n";
         str += "price: " + this.price + " (상품가격, IS NOT NULL)\n";
         str += "salePrice: " + this.salePrice + " (할인가(할인없을 경우 0), IS NOT NULL)\n";
+        str += "option: " + this.option + " (옵션(json=ProductOptions,list=True), IS NOT NULL)\n";
         str += "isOpen: " + this.isOpen + " (노출여부(Y/N), IS NOT NULL)\n";
         str += "isNew: " + this.isNew + " (신상품(Y/N), IS NOT NULL)\n";
         str += "isBest: " + this.isBest + " (베스트(Y/N), IS NOT NULL)\n";
         str += "isVote: " + this.isVote + " (추천상품(Y/N), IS NOT NULL)\n";
+        str += "url: " + this.url + " (상품 URL(크롤링한 원본 사이트), IS NOT NULL)\n";
         str += "content: " + this.content + " (상품설명, IS NOT NULL)\n";
         str += "listImg: " + this.listImg + " (리스트 이미지{json=UploadItem}, IS NOT NULL)\n";
         str += "titleImg: " + this.titleImg + " (상품 타이틀 이미지{json=UploadItem}, IS NOT NULL)\n";
