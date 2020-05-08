@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>SpringMyShop</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bs3-multi-columns-row.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css?ver=<%=System.currentTimeMillis()%>" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/sweetalert/sweetalert2.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/ajax/ajax_helper.css" />
