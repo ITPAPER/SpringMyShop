@@ -16,7 +16,7 @@
         <!-- 할인가(할인없을 경우 0), IS NOT NULL -->
         <result property="salePrice" column="sale_price" />
         <!-- 옵션(json=ProductOptions,list=True), IS NOT NULL -->
-        <result property="optionJson" column="option" />
+        <result property="productOptionJson" column="product_option" />
         <!-- 노출여부(Y/N), IS NOT NULL -->
         <result property="isOpen" column="is_open" />
         <!-- 신상품(Y/N), IS NOT NULL -->
@@ -41,12 +41,12 @@
 
     <!-- 단일행 조회를 위한 기능 정의 -->
     <select id="selectItem" parameterType="study.spring.springmyshop.model.Products" resultMap="productsMap">
-        SELECT id, name, description, price, sale_price, option, is_open, is_new, is_best, is_vote, url, content, list_img, title_img, reg_date, edit_date FROM products WHERE id=#{id}
+        SELECT id, name, description, price, sale_price, product_option, is_open, is_new, is_best, is_vote, url, content, list_img, title_img, reg_date, edit_date FROM products WHERE id=#{id}
     </select>
 
     <!-- 다중행 조회를 위한 기능 정의 -->
     <select id="selectList" parameterType="study.spring.springmyshop.model.Products" resultMap="productsMap">
-        SELECT id, name, description, price, sale_price, option, is_open, is_new, is_best, is_vote, url, content, list_img, title_img, reg_date, edit_date FROM products
+        SELECT id, name, description, price, sale_price, product_option, is_open, is_new, is_best, is_vote, url, content, list_img, title_img, reg_date, edit_date FROM products
         ORDER BY id DESC
         <if test="listCount > 0">
             LIMIT #{offset}, #{listCount}
@@ -61,9 +61,9 @@
     <!-- 데이터 저장을 위한 기능 정의 -->
     <insert id="insertItem" parameterType="study.spring.springmyshop.model.Products" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO products (
-            name, description, price, sale_price, option, is_open, is_new, is_best, is_vote, url, content, list_img, title_img, reg_date, edit_date
+            name, description, price, sale_price, product_option, is_open, is_new, is_best, is_vote, url, content, list_img, title_img, reg_date, edit_date
         ) VALUES (
-            #{name}, #{description}, #{price}, #{salePrice}, #{optionJson}, #{isOpen}, #{isNew}, #{isBest}, #{isVote}, #{url}, #{content}, #{listImgJson}, #{titleImgJson}, now(), now()
+            #{name}, #{description}, #{price}, #{salePrice}, #{productOptionJson}, #{isOpen}, #{isNew}, #{isBest}, #{isVote}, #{url}, #{content}, #{listImgJson}, #{titleImgJson}, now(), now()
         )
     </insert>
 
@@ -79,7 +79,7 @@
             description=#{description},
             price=#{price},
             sale_price=#{salePrice},
-            option=#{optionJson},
+            product_option=#{productOptionJson},
             is_open=#{isOpen},
             is_new=#{isNew},
             is_best=#{isBest},

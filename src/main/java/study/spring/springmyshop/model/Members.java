@@ -3,7 +3,7 @@ package study.spring.springmyshop.model;
 import com.google.gson.Gson;
 import study.spring.springmyshop.helper.UploadItem;
 
-/** `회원` 테이블의 POJO 클래스 (20/05/06 05:15:10) */
+/** `회원` 테이블의 POJO 클래스 (20/05/08 22:58:51) */
 public class Members {
     /** 일련번호, IS NOT NULL, PRI */
     private int id;

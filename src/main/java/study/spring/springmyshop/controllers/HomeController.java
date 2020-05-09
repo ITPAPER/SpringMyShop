@@ -50,7 +50,7 @@ public class HomeController {
         
         try {
             Products.setOffset(0);
-            Products.setListCount(8);
+            Products.setListCount(12);
             newList = productsService.getProductsList(newInput);
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,7 +58,7 @@ public class HomeController {
         
         try {
             Products.setOffset(0);
-            Products.setListCount(8);
+            Products.setListCount(12);
             bestList = productsService.getProductsList(bestInput);
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class HomeController {
         
         try {
             Products.setOffset(0);
-            Products.setListCount(12);
+            Products.setListCount(24);
             voteList = productsService.getProductsList(voteInput);
         } catch (Exception e) {
             e.printStackTrace();

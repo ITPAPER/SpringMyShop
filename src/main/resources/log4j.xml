@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
     <!-- 이클립스 콘솔에 출력되는 설정 -->
@@ -14,7 +14,8 @@
     <!-- 파일로 기록되는 로그 설정 -->
     <appender name="rollingFile" class="org.apache.log4j.RollingFileAppender">
         <!-- 로그 파일 생성위치 -->
-        <param name="file" value="자신의_workspace_경로/logs/web.log" />
+        <!-- <param name="file" value="자신의_workspace_경로/logs/web.log" /> -->
+        <param name="file" value="/Users/leekh/workspace-eclipse/logs/web.log" />
         <param name="Append" value="true" />
         <!-- 로그 파일 하나당 사이즈 100m -->
         <param name="MaxFileSize" value="100mb" />
@@ -28,7 +29,8 @@
     <!-- 날짜별 에러 로그 생성 -->
     <appender name="errorFile" class="org.apache.log4j.DailyRollingFileAppender">
         <param name="Threshold" value="ERROR" />
-        <param name="File" value="자신의_workspace_경로/logs/error.log" />
+        <!-- <param name="File" value="자신의_workspace_경로/logs/error.log" /> -->
+        <param name="File" value="/Users/leekh/workspace-eclipse/logs/error.log" />
         <param name="Append" value="true" />
         <param name="DatePattern" value="'.'yyMMdd" />
         <layout class="org.apache.log4j.PatternLayout">

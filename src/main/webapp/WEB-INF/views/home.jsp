@@ -10,42 +10,42 @@
     <div class="best">
         <div class="page-header clearfix">
             <div class="pull-left">
-                <h2>Best Item <small>인기폭주 베스트 아이템</small></h2>
+                <h2><strong class='title'>Best Item</strong> <small>인기폭주 베스트 아이템</small></h2>
             </div>
             <div class="pull-right">
-                <a href="#" class="btn btn-xs btn-link">more</a>
+                <a href="${pageContext.request.contextPath}/product/best/list" class="btn btn-xs btn-link">more</a>
             </div>
         </div>
         <c:set var="_productList" value="${bestList}"/>
-        <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/best" />
+        <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/best/detail" />
         <%@ include file="/WEB-INF/views/_inc/product_list.jsp" %>
     </div>
     
     <div class="new">
         <div class="page-header clearfix">
             <div class="pull-left">
-                <h2>New Item <small>트랜디한 신상품</small></h2>
+                <h2><strong class='title'>New Item</strong> <small>트랜디한 신상품</small></h2>
             </div>
             <div class="pull-right">
-                <a href="#" class="btn btn-xs btn-link">more</a>
+                <a href="${pageContext.request.contextPath}/product/new/list" class="btn btn-xs btn-link">more</a>
             </div>
         </div>
         <c:set var="_productList" value="${newList}"/>
-        <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/new" />
+        <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/new/detail" />
         <%@ include file="/WEB-INF/views/_inc/product_list.jsp" %>
     </div>
     
     <div class="vote">
         <div class="page-header clearfix">
             <div class="pull-left">
-                <h2>Vote Item <small>좋은 것만 모아서 추천상품</small></h2>
+                <h2><strong class='title'>Vote Item</strong> <small>좋은 것만 모아서 추천상품</small></h2>
             </div>
             <div class="pull-right">
-                <a href="#" class="btn btn-xs btn-link">more</a>
+                <a href="${pageContext.request.contextPath}/product/vote/list" class="btn btn-xs btn-link">more</a>
             </div>
         </div>
         <c:set var="_productList" value="${voteList}"/>
-        <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/vote" />
+        <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/vote/detail" />
         <%@ include file="/WEB-INF/views/_inc/product_list.jsp" %>
     </div>
 </div>

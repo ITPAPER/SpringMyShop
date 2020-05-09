@@ -38,6 +38,18 @@ label.error {
     padding: 7px;
 }
 
+.best .title {
+    color: #0750ed;
+}
+
+.new .title {
+    color: #c631eb;
+}
+
+.vote .title {
+    color: #11a63d;
+}
+
 .product-list .title-img {
     height: 300px;
     background-position: center center;
@@ -45,6 +57,9 @@ label.error {
     background-repeat: no-repeat;
 }
 
+.product-list .product-item {
+    margin-bottom: 25px;
+}
 
 .product-list a {
     color: #222;

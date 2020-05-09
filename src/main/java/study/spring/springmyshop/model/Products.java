@@ -5,7 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.Gson;
 import study.spring.springmyshop.helper.UploadItem;
 
-/** `상품` 테이블의 POJO 클래스 (20/05/07 04:26:41) */
+/** `상품` 테이블의 POJO 클래스 (20/05/08 22:58:51) */
 public class Products {
     /** 일련번호, IS NOT NULL, PRI */
     private int id;
@@ -23,7 +23,7 @@ public class Products {
     private int salePrice;
 
     /** 옵션(json=ProductOptions,list=True), IS NOT NULL */
-    private List<ProductOptions> option;
+    private List<ProductOptions> productOption;
 
     /** 노출여부(Y/N), IS NOT NULL */
     private String isOpen;
@@ -106,23 +106,23 @@ public class Products {
     }
 
     /** 옵션(json=ProductOptions,list=True), IS NOT NULL */
-    public void setOptionJson(String option) {
-        this.option = new Gson().fromJson(option, new TypeToken<List<ProductOptions>>() {}.getType());
+    public void setProductOptionJson(String productOption) {
+        this.productOption = new Gson().fromJson(productOption, new TypeToken<List<ProductOptions>>() {}.getType());
     }
 
     /** 옵션(json=ProductOptions,list=True), IS NOT NULL */
-    public void setOption(List<ProductOptions> option) {
-        this.option = option;
+    public void setProductOption(List<ProductOptions> productOption) {
+        this.productOption = productOption;
     }
 
     /** 옵션(json=ProductOptions,list=True), IS NOT NULL */
-    public List<ProductOptions> getOption() {
-        return this.option;
+    public List<ProductOptions> getProductOption() {
+        return this.productOption;
     }
 
     /** 옵션(json=ProductOptions,list=True), IS NOT NULL */
-    public String getOptionJson() {
-        return new Gson().toJson(option);
+    public String getProductOptionJson() {
+        return new Gson().toJson(productOption);
     }
 
     /** 노출여부(Y/N), IS NOT NULL */
@@ -275,7 +275,7 @@ public class Products {
         str += "description: " + this.description + " (간략설명, IS NOT NULL)\n";
         str += "price: " + this.price + " (상품가격, IS NOT NULL)\n";
         str += "salePrice: " + this.salePrice + " (할인가(할인없을 경우 0), IS NOT NULL)\n";
-        str += "option: " + this.option + " (옵션(json=ProductOptions,list=True), IS NOT NULL)\n";
+        str += "productOption: " + this.productOption + " (옵션(json=ProductOptions,list=True), IS NOT NULL)\n";
         str += "isOpen: " + this.isOpen + " (노출여부(Y/N), IS NOT NULL)\n";
         str += "isNew: " + this.isNew + " (신상품(Y/N), IS NOT NULL)\n";
         str += "isBest: " + this.isBest + " (베스트(Y/N), IS NOT NULL)\n";

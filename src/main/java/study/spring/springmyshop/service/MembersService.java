@@ -12,7 +12,7 @@ public interface MembersService {
      * @throws Exception
      */
     public Members getMembersItem(Members input) throws Exception;
-    
+
     /**
      * 회원 데이터 목록 조회
      * @param input 검색조건과 페이지 구현 정보를 담고 있는 Beans
@@ -20,7 +20,7 @@ public interface MembersService {
      * @throws Exception
      */
     public List<Members> getMembersList(Members input) throws Exception;
-    
+
     /**
      * 회원 데이터가 저장되어 있는 갯수 조회
      * @param input 검색조건을 담고 있는 Beans
@@ -28,7 +28,7 @@ public interface MembersService {
      * @throws Exception
      */
     public int getMembersCount(Members input) throws Exception;
-    
+
     /**
      * 회원 데이터 등록하기
      * @param input 저장할 정보를 담고 있는 Beans
@@ -36,7 +36,7 @@ public interface MembersService {
      * @throws Exception
      */
     public int addMembers(Members input) throws Exception;
-    
+
     /**
      * 회원 데이터 수정하기
      * @param input 수정할 정보를 담고 있는 Beans
@@ -44,7 +44,7 @@ public interface MembersService {
      * @throws Exception
      */
     public int editMembers(Members input) throws Exception;
-    
+
     /**
      * 회원 데이터 삭제하기
      * @param input 삭제할 회원의 일련번호를 담고 있는 Beans
