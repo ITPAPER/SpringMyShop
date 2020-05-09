@@ -26,15 +26,15 @@
         <div class="bg" style="background-image: url(${pageContext.request.contextPath}/assets/img/title-img1.jpg)">
             <div class="carousel-caption">
                 <h1>봄을 부르는 신상품 모음전</h1>
-                <a href="${pageContext.request.contextPath}/product/best" class="btn btn-warning">Go shopping</a>
+                <a href="${pageContext.request.contextPath}/product/new" class="btn btn-warning">Go shopping</a>
             </div>
             </div>
         </div>
         <div class="item">
         <div class="bg" style="background-image: url(${pageContext.request.contextPath}/assets/img/title-img2.jpg)">
             <div class="carousel-caption">
-                <h1>MD의 픽업. 추천상품 노마진 기획전</h1>
-                <a href="${pageContext.request.contextPath}/product/best" class="btn btn-warning">Go shopping</a>
+                <h1>추천상품 노마진 기획전</h1>
+                <a href="${pageContext.request.contextPath}/product/vote" class="btn btn-warning">Go shopping</a>
             </div>
             </div>
         </div>
