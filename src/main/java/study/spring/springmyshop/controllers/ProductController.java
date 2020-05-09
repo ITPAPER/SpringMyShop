@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import lombok.extern.slf4j.Slf4j;
 import study.spring.springmyshop.helper.PageData;
 import study.spring.springmyshop.helper.UploadItem;
 import study.spring.springmyshop.helper.WebHelper;
 import study.spring.springmyshop.model.Products;
 import study.spring.springmyshop.service.ProductsService;
 
+@Slf4j
 @Controller
 public class ProductController {
     
@@ -27,8 +29,8 @@ public class ProductController {
     @Autowired
     ProductsService productService;
 
-    @RequestMapping(value = "/product/{category}/list", method = RequestMethod.GET)
-    public ModelAndView list(Locale locale, Model model,
+    @RequestMapping(value = "/product/{category}", method = RequestMethod.GET)
+    public ModelAndView index(Locale locale, Model model,
             @PathVariable(value = "category") String category, 
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "keyword", required = false) String keyword) {
@@ -38,6 +40,8 @@ public class ProductController {
         Products input = new Products();
         String categoryName = null;
         String categoryDesc = null;
+        
+        input.setIsOpen("Y");
         
         if (category.equals("new")) {
             input.setIsNew("Y");
@@ -59,13 +63,16 @@ public class ProductController {
             input.setName(keyword);
         }
         
+        // 검색조건 로그 출력
+        log.debug(input.toString());
+        
         try {
             int total = productService.getProductsCount(input);
-            pageData = new PageData(page, total, 48, 5);
+            pageData = new PageData(page, total, 36, 5);
             
             Products.setOffset(pageData.getOffset());
             Products.setListCount(pageData.getListCount());
-            
+
             output = productService.getProductsList(input);
         } catch (Exception e) {
             return webHelper.redirect(null, e.getLocalizedMessage());
@@ -85,7 +92,7 @@ public class ProductController {
         model.addAttribute("keyword", keyword);
         model.addAttribute("pageData", pageData);
         
-        return new ModelAndView("product/list");
+        return new ModelAndView("product/index");
     }
 
 }

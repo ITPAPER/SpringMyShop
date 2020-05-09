@@ -1,3 +1,34 @@
+.navbar {
+    margin-bottom: 0 !important;
+}
+
+.carousel {
+    height: 480px;
+}
+
+.carousel .carousel-inner, .carousel .carousel-inner .item, .carousel .carousel-inner .item .bg {
+    height: 100%;
+}
+
+.carousel .item .bg {
+    display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+.carousel .item h1 {
+    font-weight: bold;
+}
+
+.carousel .item a {
+    margin-bottom: 15px;
+}
+
+footer {
+    padding-bottom: 50px;
+}
+
 .image-upload input[type='file'] {
     visibility: hidden;
     width: 0;
@@ -48,6 +79,15 @@ label.error {
 
 .vote .title {
     color: #11a63d;
+}
+
+.product-list-title .pull-right {
+    padding-top: 43px;
+}
+
+.product-list mark {
+    background-color: #fdffd1;
+    font-weight: bold;
 }
 
 .product-list .title-img {

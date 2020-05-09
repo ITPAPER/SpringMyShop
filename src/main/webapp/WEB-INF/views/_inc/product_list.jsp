@@ -12,7 +12,17 @@
                         <div class="title-img" style="background-image: url(${item.listImg.fileUrl})">
                             <span class='sr-only'>이미지</span>
                         </div>
-                        <h3>${item.name}</h3>
+                        <h3>
+                            <c:choose>
+                                <c:when test="${_keyword != null && !_keyword.equals('')}">
+                                    <c:set var="mark" value="<mark>${_keyword}</mark>" />
+                                    ${fn:replace(item.name, _keyword, mark)}
+                                </c:when>
+                                <c:otherwise>
+                                    ${item.name}
+                                </c:otherwise>
+                            </c:choose>
+                        </h3>
                         <p class='price'>
                             <c:choose>
                                 <c:when test="${item.salePrice > 0}">

@@ -46,7 +46,27 @@
 
     <!-- 다중행 조회를 위한 기능 정의 -->
     <select id="selectList" parameterType="study.spring.springmyshop.model.Products" resultMap="productsMap">
-        SELECT id, name, description, price, sale_price, product_option, is_open, is_new, is_best, is_vote, url, content, list_img, title_img, reg_date, edit_date FROM products
+        SELECT id, name, description, price, sale_price, product_option, is_open, is_new, is_best, is_vote, url, content, list_img, title_img, reg_date, edit_date FROM products 
+        
+        <where>
+            <if test="isOpen != null">
+                AND is_open=#{isOpen}
+            </if>
+            <if test="isBest != null">
+                AND is_best=#{isBest}
+            </if>
+            <if test="isNew != null">
+                AND is_new=#{isNew}
+            </if>
+            <if test="isVote != null">
+                AND is_vote=#{isVote}
+            </if>
+            
+            <if test="name != null">
+                AND name LIKE concat('%', #{name}, '%')
+            </if>
+        </where> 
+        
         ORDER BY id DESC
         <if test="listCount > 0">
             LIMIT #{offset}, #{listCount}
@@ -56,6 +76,25 @@
     <!-- 데이터 수 조회를 위한 기능 정의 -->
     <select id="selectCountAll" parameterType="study.spring.springmyshop.model.Products" resultType="int">
         SELECT COUNT(*) FROM products
+        
+        <where>
+            <if test="isOpen != null">
+                AND is_open=#{isOpen}
+            </if>
+            <if test="isBest != null">
+                AND is_best=#{isBest}
+            </if>
+            <if test="isNew != null">
+                AND is_new=#{isNew}
+            </if>
+            <if test="isVote != null">
+                AND is_vote=#{isVote}
+            </if>
+            
+            <if test="name != null">
+                AND name LIKE concat('%', #{name}, '%')
+            </if>
+        </where> 
     </select>
 
     <!-- 데이터 저장을 위한 기능 정의 -->

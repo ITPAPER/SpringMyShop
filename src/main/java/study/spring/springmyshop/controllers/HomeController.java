@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import lombok.extern.slf4j.Slf4j;
 import study.spring.springmyshop.helper.UploadItem;
 import study.spring.springmyshop.helper.WebHelper;
 import study.spring.springmyshop.model.Products;
@@ -18,7 +17,6 @@ import study.spring.springmyshop.service.ProductsService;
 /**
  * Handles requests for the application home page.
  */
-@Slf4j
 @Controller
 public class HomeController {
     
@@ -29,7 +27,7 @@ public class HomeController {
     ProductsService productsService;
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home(Locale locale, Model model) {
+    public String index(Locale locale, Model model) {
 
         List<Products> newList = null;
         List<Products> bestList = null;
@@ -97,7 +95,7 @@ public class HomeController {
         model.addAttribute("bestList", bestList);
         model.addAttribute("voteList", voteList);
         
-        return "home";
+        return "index";
     }
 
 }
