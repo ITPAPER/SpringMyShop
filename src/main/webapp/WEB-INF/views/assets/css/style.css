@@ -1,13 +1,65 @@
+/* 공통
+ ------------------------------------------------ */
 body {
     padding-top: 50px;
 }
 
+footer {
+    padding-bottom: 50px;
+}
+
+label.error {
+    color: red;
+    font-weight: normal;
+    font-size: 13px;
+    padding: 5px;
+    margin-bottom: 0;
+}
+
+.control-label {
+    white-space: nowrap;
+}
+
+#menu-container .member-photo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+#menu-container .member-photo-link {
+    padding: 7px;
+}
+
+/* 메뉴바
+ ------------------------------------------------ */
 .navbar {
     margin-bottom: 0 !important;
 }
 
+/* 인덱스 캐러셀
+ ------------------------------------------------ */
 .carousel {
     height: 640px;
+}
+
+@media (min-width : 768px) and (max-width: 991px) {
+    .carousel {
+        height: 560px;
+    }
+    
+    .carousel h1 {
+        font-size: 34px;
+    }
+}
+
+@media (max-width : 767px) {
+    .carousel {
+        height: 480px;
+    }
+    
+    .carousel h1 {
+        font-size: 30px;
+    }
 }
 
 .carousel .carousel-inner, .carousel .carousel-inner .item, .carousel .carousel-inner .item .bg {
@@ -29,50 +81,8 @@ body {
     margin-bottom: 15px;
 }
 
-footer {
-    padding-bottom: 50px;
-}
-
-.image-upload input[type='file'] {
-    visibility: hidden;
-    width: 0;
-    height: 0
-}
-
-.image-upload .preview-btn {
-    cursor: pointer;
-    background-image: url(../img/upload.png);
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-}
-
-.control-label {
-    white-space: nowrap;
-}
-
-#join-form .input-group-btn {
-    vertical-align: top;
-}
-
-label.error {
-    color: red;
-    font-weight: normal;
-    font-size: 13px;
-    padding: 5px;
-    margin-bottom: 0;
-}
-
-#menu-container .member-photo {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-}
-
-#menu-container .member-photo-link {
-    padding: 7px;
-}
-
+/* 인덱스 상품별 영역
+ ------------------------------------------------ */
 .best .title {
     color: #0750ed;
 }
@@ -85,6 +95,28 @@ label.error {
     color: #11a63d;
 }
 
+/* 회원가입
+ ------------------------------------------------ */
+#join-form .image-upload input[type='file'] {
+    visibility: hidden;
+    width: 0;
+    height: 0
+}
+
+#join-form .image-upload .preview-btn {
+    cursor: pointer;
+    background-image: url(../img/upload.png);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#join-form .input-group-btn {
+    vertical-align: top;
+}
+
+/* 상품목록
+ ------------------------------------------------ */
 .product-list-title .pull-right {
     padding-top: 43px;
 }
@@ -144,4 +176,49 @@ label.error {
     font-size: 15px;
     margin-left: 10px;
     color: #f00;
+}
+
+/* 상품상세
+ ------------------------------------------------ */
+.product-detail .detail-title h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.product-detail .detail-title p {
+    font-size: 14px;
+    color: #000;
+}
+
+.product-detail .detail-title .page-header {
+    padding-bottom: 0;
+    margin-bottom: 10px;
+}
+
+.product-detail.best .detail-title h1 {
+    color: #0750ed;
+}
+
+.product-detail.new .detail-title h1 {
+    color: #c631eb;
+}
+
+.product-detail.vote .detail-title {
+    color: #11a63d;
+}
+
+@media ( min-width: 992px) {
+    .product-detail .title-img {
+        margin-top: 40px;
+    }
+}
+
+@media ( max-width : 991px) {
+    .product-detail .detail-title h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .product-detail .detail-title p {
+        font-size: 14px;
+    }
 }

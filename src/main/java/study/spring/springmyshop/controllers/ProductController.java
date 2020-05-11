@@ -1,7 +1,6 @@
 package study.spring.springmyshop.controllers;
 
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -111,6 +110,7 @@ public class ProductController {
      */
     @RequestMapping(value = "/product/{category}/{productId}", method = RequestMethod.GET)
     public ModelAndView detail(Model model,
+            @PathVariable(value = "category") String category, 
             @PathVariable(value = "productId") int productId) {
         
         Products input = new Products();
@@ -139,7 +139,8 @@ public class ProductController {
         }
         
         log.debug(output.toString());
-        
+
+        model.addAttribute("output", output);
         model.addAttribute("output", output);
         
         return new ModelAndView("product/detail");

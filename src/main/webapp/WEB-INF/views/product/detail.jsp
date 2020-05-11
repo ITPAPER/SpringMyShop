@@ -6,8 +6,8 @@
 <%@ include file="/WEB-INF/views/_inc/top.jsp"%>
 
 <!-- ========== 컨텐츠 영역 시작 ========== -->
-<div class="container">
-    <div class="visible-xs visible-sm">
+<div class="container product-detail ${category}">
+    <div class="visible-xs visible-sm detail-title m">
         <div class="page-header">
             <h1>${output.name}</h1>
         </div>
@@ -15,10 +15,10 @@
     </div>
     <div class="row">
         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-            <img src="${output.titleImg.fileUrl}" width="100%" alt="${output.name}" style="margin-top: 40px" />
+            <img src="${output.titleImg.fileUrl}" width="100%" alt="${output.name}" class="title-img" />
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-            <div class="visible-md visible-lg">
+            <div class="visible-md visible-lg detail-title">
                 <div class="page-header">
                     <h1>${output.name}</h1>
                 </div>
