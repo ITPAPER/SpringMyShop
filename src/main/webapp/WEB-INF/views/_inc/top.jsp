@@ -6,7 +6,7 @@
 <%@ include file="/WEB-INF/views/_inc/header.jsp"%>
 <!-- ========== 상단 공통 영역 시작 ========== -->
 <c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">

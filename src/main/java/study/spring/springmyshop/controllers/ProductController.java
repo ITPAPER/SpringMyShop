@@ -29,8 +29,16 @@ public class ProductController {
     @Autowired
     ProductsService productService;
 
+    /**
+     * 카테고리별 상품 목록 조회
+     * @param model
+     * @param category
+     * @param page
+     * @param keyword
+     * @return
+     */
     @RequestMapping(value = "/product/{category}", method = RequestMethod.GET)
-    public ModelAndView index(Locale locale, Model model,
+    public ModelAndView index(Model model,
             @PathVariable(value = "category") String category, 
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "keyword", required = false) String keyword) {
@@ -93,6 +101,48 @@ public class ProductController {
         model.addAttribute("pageData", pageData);
         
         return new ModelAndView("product/index");
+    }
+    
+    /**
+     * 상품 상세 정보 조회
+     * @param model
+     * @param productId
+     * @return
+     */
+    @RequestMapping(value = "/product/{category}/{productId}", method = RequestMethod.GET)
+    public ModelAndView detail(Model model,
+            @PathVariable(value = "productId") int productId) {
+        
+        Products input = new Products();
+        input.setId(productId);
+        
+        Products output = null;
+        
+        try {
+            output = productService.getProductsItem(input);
+        } catch (Exception e) {
+            webHelper.redirect(null, e.getLocalizedMessage());
+        }
+        
+        if (output != null) {
+            UploadItem item = output.getTitleImg();
+            String filePath = item.getFilePath();
+            item.setFileUrl(webHelper.getUploadPath(filePath));
+            
+            try {
+                String thumbnail = webHelper.createThumbnail(filePath, 800, 800, false);
+                item.setThumbnailUrl(webHelper.getUploadPath(thumbnail));
+            } catch (Exception e) {
+                // 썸네일 생성 실패시 원본 이미지를 썸네일로 직접 지정
+                item.setThumbnailUrl(webHelper.getUploadPath(filePath));
+            }
+        }
+        
+        log.debug(output.toString());
+        
+        model.addAttribute("output", output);
+        
+        return new ModelAndView("product/detail");
     }
 
 }

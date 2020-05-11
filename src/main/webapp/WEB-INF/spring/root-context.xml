@@ -10,8 +10,8 @@
         <prop key="encType">UTF-8</prop>
         <!-- 업로드 디렉토리 -->
         <!-- <prop key="uploadDir">자신의_workspace_경로/upload</prop> -->
-        <!-- <prop key="uploadDir">T:/workspace-eclipse/upload</prop> -->
-        <prop key="uploadDir">/Users/leekh/workspace-eclipse/upload</prop>
+        <prop key="uploadDir">D:/workspace-eclipse/upload</prop>
+        <!-- <prop key="uploadDir">/Users/leekh/workspace-eclipse/upload</prop> -->
         <!-- 업로드 디렉토리에 대한 WebPath -->
         <prop key="uploadPath">/springmyshop/upload</prop>
         <!-- 최대 업로드 가능 용량 (-1인 경우 무제한) -->
@@ -41,7 +41,7 @@
         <!-- 데이터베이스 계정명 -->
         <prop key="dbUsername">root</prop>
         <!-- 데이터베이스 비밀번호 -->
-        <prop key="dbPassword">root</prop>
+        <prop key="dbPassword">123qwe!@#</prop>
         <!-- Mapper 파일들이 위치할 '/src/main/resources' 하위의 경로 -->
         <prop key="mapperPath">/mappers/**/*Mapper.xml</prop>
     </util:properties>

@@ -1,9 +1,13 @@
+body {
+    padding-top: 50px;
+}
+
 .navbar {
     margin-bottom: 0 !important;
 }
 
 .carousel {
-    height: 480px;
+    height: 640px;
 }
 
 .carousel .carousel-inner, .carousel .carousel-inner .item, .carousel .carousel-inner .item .bg {

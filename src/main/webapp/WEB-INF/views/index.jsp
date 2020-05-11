@@ -54,7 +54,7 @@
             </div>
         </div>
         <c:set var="_productList" value="${bestList}" />
-        <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/best/detail" />
+        <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/best" />
         <%@ include file="/WEB-INF/views/_inc/product_list.jsp"%>
     </div>
     <div class="new">
@@ -69,7 +69,7 @@
             </div>
         </div>
         <c:set var="_productList" value="${newList}" />
-        <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/new/detail" />
+        <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/new" />
         <%@ include file="/WEB-INF/views/_inc/product_list.jsp"%>
     </div>
     <div class="vote">
@@ -84,7 +84,7 @@
             </div>
         </div>
         <c:set var="_productList" value="${voteList}" />
-        <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/vote/detail" />
+        <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/vote" />
         <%@ include file="/WEB-INF/views/_inc/product_list.jsp"%>
     </div>
 </div>

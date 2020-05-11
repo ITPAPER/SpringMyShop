@@ -34,7 +34,7 @@
         <!-- 상품목록 -->
         <section>
             <c:set var="_productList" value="${productList}" />
-            <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/${category}/detail" />
+            <c:set var="_productItemUrl" value="${pageContext.request.contextPath}/product/${category}" />
             <c:set var="_keyword" value="${keyword}" />
             <%@ include file="/WEB-INF/views/_inc/product_list.jsp"%>
         </section>
