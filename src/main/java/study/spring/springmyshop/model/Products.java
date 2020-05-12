@@ -41,7 +41,7 @@ public class Products {
     private String url;
 
     /** 상품설명, IS NOT NULL */
-    private Object content;
+    private String content;
 
     /** 리스트 이미지{json=UploadItem}, IS NOT NULL */
     private UploadItem listImg;
@@ -176,12 +176,12 @@ public class Products {
     }
 
     /** 상품설명, IS NOT NULL */
-    public void setContent(Object content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
     /** 상품설명, IS NOT NULL */
-    public Object getContent() {
+    public String getContent() {
         return this.content;
     }
 

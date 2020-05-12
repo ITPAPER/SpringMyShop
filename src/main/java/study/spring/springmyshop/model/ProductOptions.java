@@ -8,5 +8,5 @@ public class ProductOptions {
     private String name;
     
     /* 옵션 항목들 */
-    private String[] values;
+    private String[] value;
 }

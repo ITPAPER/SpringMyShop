@@ -9,9 +9,9 @@
             <c:forEach var="item" items="${_productList}" varStatus="status">
                 <div class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                     <a href="${_productItemUrl}/${item.id}">
-                        <div class="title-img" style="background-image: url(${item.listImg.fileUrl})">
+                        <span class="title-img" style="background-image: url(${item.listImg.fileUrl})">
                             <span class='sr-only'>이미지</span>
-                        </div>
+                        </span>
                         <h3>
                             <c:choose>
                                 <c:when test="${_keyword != null && !_keyword.equals('')}">

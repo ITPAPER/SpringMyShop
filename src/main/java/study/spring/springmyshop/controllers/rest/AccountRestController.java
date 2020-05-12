@@ -144,7 +144,7 @@ public class AccountRestController {
             @RequestParam(value = "postcode",       required = false) String postcode,
             @RequestParam(value = "addr1",          required = false) String addr1,
             @RequestParam(value = "addr2",          required = false) String addr2,
-            @RequestParam(required = false) MultipartFile photo) {
+            @RequestParam(required = false)         MultipartFile photo) {
 
         /** 1) 유효성 검증 */
         // POSTMAN 등의 클라이언트 프로그램으로 백엔드에 직접 접속하는 경우를 방지하기 위해

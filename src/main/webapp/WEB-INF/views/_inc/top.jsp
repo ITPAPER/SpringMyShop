@@ -62,8 +62,7 @@
                         </li>
                     </c:otherwise>
                 </c:choose>
-                <!-- <li><a href="#" title="장바구니"><i class="fas fa-shopping-cart"></i><span class="hidden-md hidden-lg">&nbsp;장바구니</span></a></li>
-                <li><a href="#" title="주문조회"><i class="fas fa-shopping-bag"></i><span class="hidden-md hidden-lg">&nbsp;주문조회</span></a></li> -->
+                <li><a href="${pageContext.request.contextPath}/shopping/cart" title="장바구니"><i class="fas fa-shopping-cart"></i><span class="hidden-md hidden-lg">&nbsp;장바구니</span></a></li>
             </ul>
         </div>
     </div>

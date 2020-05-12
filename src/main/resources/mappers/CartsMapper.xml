@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CartsMapper">
+    <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+    <resultMap id="cartsMap" type="study.spring.springmyshop.model.Carts">
+        <!-- 일련번호, IS NOT NULL, PRI -->
+        <result property="id" column="id" />
+        <!-- JSESSIONID, IS NOT NULL -->
+        <result property="sessionId" column="session_id" />
+        <!-- 상품번호, IS NOT NULL, MUL -->
+        <result property="productId" column="product_id" />
+        <!-- 회원번호, IS NULL, MUL -->
+        <result property="memberId" column="member_id" />
+        <!-- 금액, IS NOT NULL -->
+        <result property="orderPrice" column="order_price" />
+        <!-- 상품옵션(json=CartOptions,list=True), IS NOT NULL -->
+        <result property="optionsJson" column="options" />
+        <!-- 직접주문여부(Y/N), IS NOT NULL -->
+        <result property="isDirectOrder" column="is_direct_order" />
+        <!-- 등록일시, IS NOT NULL -->
+        <result property="regDate" column="reg_date" />
+        <!-- 변경일시, IS NOT NULL -->
+        <result property="editDate" column="edit_date" />
+        <!-- 제품명, IS NOT NULL -->
+        <result property="name" column="name" />
+        <!-- 제품설명, IS NOT NULL -->
+        <result property="description" column="description" />
+        <!-- 리스트이미지, IS NOT NULL -->
+        <result property="listImgJson" column="listImg" />
+    </resultMap>
+
+    <!-- 단일행 조회를 위한 기능 정의 -->
+    <select id="selectItem" parameterType="study.spring.springmyshop.model.Carts" resultMap="cartsMap">
+        SELECT carts.id, session_id, product_id, member_id, order_price, `options`, is_direct_order, carts.reg_date, carts.edit_date
+        name, description, list_img
+        FROM carts INNER JOIN products
+        ON carts.product_id = products.id
+        
+        <where>
+            <choose>
+                <when test="memberId != null">
+                    AND member_id=#{memberId}
+                </when>
+                <when test="sessionId != null">
+                    AND session_id=#{sessionId}
+                </when>
+            </choose>
+            
+            AND is_direct_order='N'
+        </where>
+    </select>
+
+    <!-- 다중행 조회를 위한 기능 정의 -->
+    <select id="selectList" parameterType="study.spring.springmyshop.model.Carts" resultMap="cartsMap">
+        SELECT carts.id, session_id, product_id, member_id, order_price, `options`, is_direct_order, carts.reg_date, carts.edit_date
+        name, description, list_img
+        FROM carts INNER JOIN products
+        ON carts.product_id = products.id
+        
+        <where>
+            <choose>
+                <when test="memberId != null">
+                    AND member_id=#{memberId}
+                </when>
+                <when test="sessionId != null">
+                    AND session_id=#{sessionId}
+                </when>
+            </choose>
+            
+            AND is_direct_order='N'
+        </where>
+    </select>
+
+    <!-- 데이터 수 조회를 위한 기능 정의 -->
+    <select id="selectCountAll" parameterType="study.spring.springmyshop.model.Carts" resultType="int">
+        SELECT COUNT(*) FROM carts
+    </select>
+
+    <!-- 데이터 저장을 위한 기능 정의 -->
+    <insert id="insertItem" parameterType="study.spring.springmyshop.model.Carts" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO carts (
+            session_id, member_id, product_id, order_price, `options`, is_direct_order, reg_date, edit_date
+        ) VALUES (
+            #{sessionId}, #{memberId}, #{productId}, #{orderPrice}, #{optionsJson}, #{isDirectOrder}, now(), now()
+        )
+    </insert>
+
+    <!-- 데이터 삭제를 위한 기능 정의 -->
+    <delete id="deleteItem" parameterType="study.spring.springmyshop.model.Carts">
+        DELETE FROM carts WHERE id=#{id}
+    </delete>
+
+    <!-- 현재 사용자에 대한 임시 장바구니 삭제 -->
+    <delete id="deleteTempItem" parameterType="study.spring.springmyshop.model.Carts">
+        DELETE FROM carts
+        <where>
+            <choose>
+                <when test="memberId != null">
+                    AND member_id=#{memberId}
+                </when>
+                <when test="sessionId != null">
+                    AND session_id=#{sessionId}
+                </when>
+            </choose>
+            
+            AND is_direct_order='Y'
+        </where>
+    </delete>
+
+    <!-- 데이터 갱신을 위한 기능 정의 -->
+    <update id="updateItem" parameterType="study.spring.springmyshop.model.Carts">
+        UPDATE carts SET 
+            id=#{id},
+            session_id=#{sessionId},
+            product_id=#{productId},
+            order_price=#{orderPrice},
+            `options`=#{optionsJson},
+            is_direct_order=#{isDirectOrder},
+            edit_date=now()
+        WHERE id=#{id}
+    </update>
+
+</mapper>
