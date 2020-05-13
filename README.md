@@ -7,7 +7,7 @@
 
 ## 사이트 미리보기
 
-[http://itproject.ezenac.co.kr](http://itproject.ezenac.co.kr)
+[http://itproject.ezenac.co.kr/springmyshop](http://itproject.ezenac.co.kr/springmyshop)
 
 > 스크린샷은 이 페이지 맨 하단부에 있습니다.
 
