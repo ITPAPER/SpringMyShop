@@ -54,4 +54,5 @@ log/
 helper/
 sql/
 script/
-
+root-context.xml
+log4j.xml
