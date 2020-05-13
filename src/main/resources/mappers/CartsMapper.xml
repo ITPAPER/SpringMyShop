@@ -16,7 +16,7 @@
         <!-- 금액, IS NOT NULL -->
         <result property="orderPrice" column="order_price" />
         <!-- 상품옵션(json=CartOptions,list=True), IS NOT NULL -->
-        <result property="optionsJson" column="options" />
+        <result property="orderOptionJson" column="order_option" />
         <!-- 직접주문여부(Y/N), IS NOT NULL -->
         <result property="isDirectOrder" column="is_direct_order" />
         <!-- 등록일시, IS NOT NULL -->
@@ -28,15 +28,16 @@
         <!-- 제품설명, IS NOT NULL -->
         <result property="description" column="description" />
         <!-- 리스트이미지, IS NOT NULL -->
-        <result property="listImgJson" column="listImg" />
+        <result property="listImgJson" column="list_img" />
+        <!-- 타이틀 이미지, IS NOT NULL -->
+        <result property="titleImgJson" column="title_img" />
     </resultMap>
 
     <!-- 단일행 조회를 위한 기능 정의 -->
     <select id="selectItem" parameterType="study.spring.springmyshop.model.Carts" resultMap="cartsMap">
-        SELECT carts.id, session_id, product_id, member_id, order_price, `options`, is_direct_order, carts.reg_date, carts.edit_date
-        name, description, list_img
-        FROM carts INNER JOIN products
-        ON carts.product_id = products.id
+        SELECT carts.id, session_id, product_id, member_id, order_price, `order_option`, is_direct_order, carts.reg_date, carts.edit_date,
+        products.name, products.description, products.list_img, products.title_img
+        FROM carts INNER JOIN products ON carts.product_id = products.id
         
         <where>
             <choose>
@@ -54,10 +55,9 @@
 
     <!-- 다중행 조회를 위한 기능 정의 -->
     <select id="selectList" parameterType="study.spring.springmyshop.model.Carts" resultMap="cartsMap">
-        SELECT carts.id, session_id, product_id, member_id, order_price, `options`, is_direct_order, carts.reg_date, carts.edit_date
-        name, description, list_img
-        FROM carts INNER JOIN products
-        ON carts.product_id = products.id
+        SELECT carts.id, session_id, product_id, member_id, order_price, order_option, is_direct_order, carts.reg_date, carts.edit_date,
+        products.name, products.description, products.list_img, products.title_img
+        FROM carts INNER JOIN products ON carts.product_id = products.id
         
         <where>
             <choose>
@@ -69,7 +69,17 @@
                 </when>
             </choose>
             
-            AND is_direct_order='N'
+            <choose>
+                <when test="idArr != null">
+                    AND carts.id IN 
+                    <foreach collection="idArr" item="item" index="index" open="(" close=")" separator=",">
+                        #{item}
+                    </foreach>
+                </when>
+                <otherwise>
+                    AND is_direct_order='N'
+                </otherwise>
+            </choose>
         </where>
     </select>
 
@@ -81,15 +91,31 @@
     <!-- 데이터 저장을 위한 기능 정의 -->
     <insert id="insertItem" parameterType="study.spring.springmyshop.model.Carts" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO carts (
-            session_id, member_id, product_id, order_price, `options`, is_direct_order, reg_date, edit_date
+            session_id, member_id, product_id, order_price, order_option, is_direct_order, reg_date, edit_date
         ) VALUES (
-            #{sessionId}, #{memberId}, #{productId}, #{orderPrice}, #{optionsJson}, #{isDirectOrder}, now(), now()
+            #{sessionId}, #{memberId}, #{productId}, #{orderPrice}, #{orderOptionJson}, #{isDirectOrder}, now(), now()
         )
     </insert>
 
     <!-- 데이터 삭제를 위한 기능 정의 -->
     <delete id="deleteItem" parameterType="study.spring.springmyshop.model.Carts">
-        DELETE FROM carts WHERE id=#{id}
+        DELETE FROM carts
+        
+        <where>
+            <choose>
+                <when test="memberId != null">
+                    AND member_id=#{memberId}
+                </when>
+                <when test="sessionId != null">
+                    AND session_id=#{sessionId}
+                </when>
+            </choose>
+            
+            AND id IN 
+            <foreach collection="idArr" item="item" index="index" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        </where>
     </delete>
 
     <!-- 현재 사용자에 대한 임시 장바구니 삭제 -->
@@ -116,7 +142,7 @@
             session_id=#{sessionId},
             product_id=#{productId},
             order_price=#{orderPrice},
-            `options`=#{optionsJson},
+            order_option=#{orderOptionJson},
             is_direct_order=#{isDirectOrder},
             edit_date=now()
         WHERE id=#{id}

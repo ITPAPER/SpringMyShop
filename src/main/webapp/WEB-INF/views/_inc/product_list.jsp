@@ -37,7 +37,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <fmt:formatNumber value="${item.price}" pattern="#,###" />원
-                                        </c:otherwise>
+                                </c:otherwise>
                             </c:choose>
                         </p>
                         <p class='desc'>${item.description}</p>

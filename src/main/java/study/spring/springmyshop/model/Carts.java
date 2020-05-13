@@ -25,7 +25,7 @@ public class Carts {
     private int orderPrice;
 
     /** 상품옵션(json=CartOptions,list=True), IS NOT NULL */
-    private List<CartOptions> options;
+    private List<OrderOptions> orderOption;
 
     /** 직접주문여부(Y/N), IS NOT NULL */
     private String isDirectOrder;
@@ -40,6 +40,10 @@ public class Carts {
     private String name;
     private String description;
     private UploadItem listImg;
+    private UploadItem titleImg;
+    
+    /** 대량 삭제를 위한 일련번호 배열 */
+    private int[] idArr;
 
     /** 일련번호, IS NOT NULL, PRI */
     public void setId(int id) {
@@ -92,23 +96,23 @@ public class Carts {
     }
 
     /** 상품옵션(json=CartOptions,list=True), IS NOT NULL */
-    public void setOptionsJson(String options) {
-        this.options = new Gson().fromJson(options, new TypeToken<List<CartOptions>>() {}.getType());
+    public void setOrderOptionJson(String orderOption) {
+        this.orderOption = new Gson().fromJson(orderOption, new TypeToken<List<OrderOptions>>() {}.getType());
     }
 
     /** 상품옵션(json=CartOptions,list=True), IS NOT NULL */
-    public void setOptions(List<CartOptions> options) {
-        this.options = options;
+    public void setOrderOption(List<OrderOptions> orderOption) {
+        this.orderOption = orderOption;
     }
 
     /** 상품옵션(json=CartOptions,list=True), IS NOT NULL */
-    public List<CartOptions> getOptions() {
-        return this.options;
+    public List<OrderOptions> getOrderOption() {
+        return this.orderOption;
     }
 
     /** 상품옵션(json=CartOptions,list=True), IS NOT NULL */
-    public String getOptionsJson() {
-        return new Gson().toJson(options);
+    public String getOrderOptionJson() {
+        return new Gson().toJson(orderOption);
     }
 
     /** 직접주문여부(Y/N), IS NOT NULL */
@@ -177,6 +181,38 @@ public class Carts {
         return new Gson().toJson(this.listImg);
     }
 
+    /** 상품 타이틀 이미지{json=UploadItem}, IS NOT NULL */
+    public void setTitleImgJson(String titleImg) {
+        this.titleImg = new Gson().fromJson(titleImg, UploadItem.class);
+    }
+
+    /** 상품 타이틀 이미지{json=UploadItem}, IS NOT NULL */
+    public void setTitleImg(UploadItem titleImg) {
+        this.titleImg = titleImg;
+    }
+
+    /** 상품 타이틀 이미지{json=UploadItem}, IS NOT NULL */
+    public UploadItem getTitleImg() {
+        return this.titleImg;
+    }
+
+    /** 상품 타이틀 이미지{json=UploadItem}, IS NOT NULL */
+    public String getTitleImgJson() {
+        return new Gson().toJson(this.titleImg);
+    }
+    
+    
+
+    public int[] getIdArr() {
+        return idArr;
+    }
+
+    public void setIdArr(int[] idArr) {
+        this.idArr = idArr;
+    }
+
+
+
     /** LIMIT 절에서 사용할 조회 시작 위치 */
     private static int offset;
 
@@ -207,7 +243,7 @@ public class Carts {
         str += "productId: " + this.productId + " (상품번호, IS NOT NULL, MUL)\n";
         str += "memberId: " + this.memberId + " (회원번호, IS NULL, MUL)\n";
         str += "orderPrice: " + this.orderPrice + " (금액, IS NOT NULL)\n";
-        str += "options: " + this.options + " (상품옵션(json=CartOptions,list=True), IS NOT NULL)\n";
+        str += "orderOption: " + this.orderOption + " (상품옵션(json=CartOptions,list=True), IS NOT NULL)\n";
         str += "isDirectOrder: " + this.isDirectOrder + " (직접주문여부(Y/N), IS NOT NULL)\n";
         str += "regDate: " + this.regDate + " (등록일시, IS NOT NULL)\n";
         str += "editDate: " + this.editDate + " (변경일시, IS NOT NULL)\n";

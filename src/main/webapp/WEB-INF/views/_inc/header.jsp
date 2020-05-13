@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
+<meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>SpringMyShop</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />

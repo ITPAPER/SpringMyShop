@@ -162,7 +162,7 @@ $(function() {
         // 직접주문인 경우 direct 파라미터를 'Y'로 설정
         orderInfo.direct = 'Y';
 
-        const url = ROOT_URL + '/rest/shopping/add_cart';
+        const url = ROOT_URL + '/rest/shopping/cart';
         console.log(url);
 
         $.post(url, orderInfo, function(json) {
@@ -184,7 +184,7 @@ $(function() {
             const input = $("<input>");
             input.attr({
                 type: 'hidden',
-                name: 'cart_id',
+                name: 'cart_id[]',
                 value: json.cart_id
             })
 
@@ -208,7 +208,7 @@ $(function() {
         // 장바구니인 경우 direct 파라미터를 'N'으로 설정
         orderInfo.direct = 'N';
 
-        const url = ROOT_URL + '/rest/shopping/add_cart';
+        const url = ROOT_URL + '/rest/shopping/cart';
         console.log(url);
         $.post(url, orderInfo, function(json) {
             console.log("장바구니ID: ", json.cart_id);

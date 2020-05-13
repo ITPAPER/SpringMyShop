@@ -140,7 +140,7 @@ public class ProductController {
         
         log.debug(output.toString());
 
-        model.addAttribute("output", output);
+        model.addAttribute("category", category);
         model.addAttribute("output", output);
         
         return new ModelAndView("product/detail");
