@@ -65,7 +65,7 @@
         INSERT INTO members (
             user_id, user_pw, user_name, email, phone, birthday, gender, postcode, addr1, addr2, photo, is_out, is_admin, login_date, reg_date, edit_date
         ) VALUES (
-            #{userId}, #{userPw}, #{userName}, #{email}, #{phone}, #{birthday}, #{gender}, #{postcode}, #{addr1}, #{addr2}, #{photoJson}, #{isOut}, #{isAdmin}, #{loginDate}, now(), now()
+            #{userId}, MD5(#{userPw}), #{userName}, #{email}, #{phone}, #{birthday}, #{gender}, #{postcode}, #{addr1}, #{addr2}, #{photoJson}, #{isOut}, #{isAdmin}, #{loginDate}, now(), now()
         )
     </insert>
 
@@ -78,7 +78,7 @@
     <update id="updateItem" parameterType="study.spring.springmyshop.model.Members">
         UPDATE members SET 
             user_id=#{userId},
-            user_pw=#{userPw},
+            user_pw=MD5(#{userPw}),
             user_name=#{userName},
             email=#{email},
             phone=#{phone},
